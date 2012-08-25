@@ -2088,7 +2088,7 @@ Deck.prototype.eval7Hand = function(hand) {
         }
     }
     return best;
-}
+};
 
 // My funcs
 Deck.prototype.debug = function() {
