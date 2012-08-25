@@ -2075,6 +2075,21 @@ Deck.prototype.eval5Hand = function(hand) {
     return this.eval5Cards(hand[0],hand[1],hand[2],hand[3],hand[4]);
 };
 
+Deck.prototype.eval7Hand = function(hand) {
+    var best=9999;
+    for(var i=0; i<21; i++) {
+        var h = [];
+        for(var j=0; j<5; j++) {
+            h.push(hand[this.perm7[i][j]]);
+            }
+        var q = this.eval5Hand(h);
+        if(q < best) {
+            best = q;
+        }
+    }
+    return best;
+}
+
 // My funcs
 Deck.prototype.debug = function() {
     console.log(this.deck);
