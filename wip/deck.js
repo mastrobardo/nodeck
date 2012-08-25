@@ -1,6 +1,7 @@
 var Deck = function() {
     this.deck = [];
     this.primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41];
+    this.rankString = "23456789TJQKA";
 
     // Gets a rank (0-12) for a specific card format
     this.rank = function(x) {
@@ -43,8 +44,34 @@ Deck.prototype.shuffle = function() {
     }
 };
 
+// Not sure why this has a length passed in
+//Deck.prototype.print = function(hand, n) {
+Deck.prototype.print = function(hand) {
+    var n = hand.length;
+    for(var i=0; i<n; i++) {
+        var card = hand[i];
+        var suit = '';
+        var r = this.rank(card);
+        if(card & 0x8000) { // Use constant here
+            suit = 'c';
+        } else if(card & 0x4000) {
+            suit = 'd';
+        } else if(card & 0x2000) {
+            suit = 'h';
+        } else {
+            suit = 's';
+        }
+        console.log(this.rankString[r]+suit);
+    }
+};
+
+// My funcs
 Deck.prototype.debug = function() {
     console.log(this.deck);
+};
+
+Deck.prototype.getCard = function(index) {
+    return this.deck[index];
 };
 
 module.exports.create = function() {
