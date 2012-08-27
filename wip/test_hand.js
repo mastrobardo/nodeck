@@ -12,7 +12,9 @@ for(i=1; i<=NUM_PLAY; i++) {
 }
 
 var h = H.create(seats, deck, 100, 1);
+console.log('Start state:');
 for(var i=0; i<5; i++) {
     h.debug();
+    console.log('Round '+(i+1));
     h.nextRound();
 }
