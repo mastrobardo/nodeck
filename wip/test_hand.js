@@ -6,6 +6,7 @@ var deck = D.create();
 var NUM_PLAY = 5;
 var START_CHIPS = 5000;
 
+var start = new Date();
 var i, seats = [];
 for(i=1; i<=NUM_PLAY; i++) {
     seats.push(S.create("Player "+i, START_CHIPS));
@@ -18,3 +19,5 @@ for(var i=0; i<5; i++) {
     console.log('Round '+(i+1));
     h.nextRound();
 }
+var end = new Date();
+console.log('Time: '+(end-start)+'ms');
