@@ -2,6 +2,7 @@ var Deck = function() {
     this.deck = [];
     this.primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41];
     this.rankString = "23456789TJQKA";
+    this.nextCardIndex = 0;
 
     /*
     ** this is a table lookup for all "flush" hands (e.g.  both
@@ -1993,6 +1994,7 @@ Deck.prototype.init = function() {
             this.deck[n] = this.primes[j] | (j << 8) | suit | (1 << (16+j));
         }
     }
+    this.nextCardIndex = 0;
 };
 
 // Given a rank/suit, give index in deck of that card
@@ -2096,7 +2098,7 @@ Deck.prototype.debug = function() {
 };
 
 Deck.prototype.getCard = function(index) {
-    return this.deck[index];
+    return this.deck[this.nextCardIndex++];
 };
 
 module.exports.create = function() {
