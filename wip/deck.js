@@ -2101,6 +2101,18 @@ Deck.prototype.getCard = function(index) {
     return this.deck[this.nextCardIndex++];
 };
 
+Deck.prototype.cardsLeft = function() {
+    return this.deck.length - this.nextCardIndex;
+};
+
+Deck.prototype.showAvailable = function() {
+    if(this.nextCardIndex == 0)
+        return this.print(this.deck);
+
+    var tmp = this.deck.slice(this.nextCardIndex);
+        return this.print(tmp);
+};
+
 module.exports.create = function() {
     return new Deck();
 };

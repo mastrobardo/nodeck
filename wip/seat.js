@@ -63,6 +63,10 @@ Seat.prototype.dealCard = function(deck) {
     this.hole.push(deck.getCard());
 };
 
+Seat.prototype.getHole = function() {
+    return this.hole;
+};
+
 module.exports.create = function(player, chip_count) {
     return new Seat(player, chip_count);
 };
@@ -81,4 +85,12 @@ Seat.prototype.debug = function(deck) {
         console.log('Hole: NONE');
     }
     console.log('Folded: '+this.folded+', Active: '+this.active+', All-in: '+this.allIn);
+};
+
+Seat.prototype.debugShort = function(deck, outcome) {
+    var out = [ 
+        this.player+': ' + ((this.hole.length>0) ? deck.print(this.hole) : 'NONE'),
+        '('+this.chips.committed+'/'+this.chips.available+')'+outcome
+    ];
+    console.log(out.join(', '));
 };

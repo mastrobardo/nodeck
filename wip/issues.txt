@@ -1,0 +1,3 @@
+No betting mechanics yet
+No detection of inactive seats in game loop
+Assumes final showdown, always calls eval7, needs to call eval 5, 6 or 7 (and need an eval6)
